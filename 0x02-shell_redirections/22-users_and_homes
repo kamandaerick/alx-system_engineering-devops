@@ -1,3 +1,2 @@
 #!/bin/bash
-cut -d":" --fields=1,6 /etc/passwd | sort
-
+awk -F: '{print $1, $6}' /etc/passwd | sort
