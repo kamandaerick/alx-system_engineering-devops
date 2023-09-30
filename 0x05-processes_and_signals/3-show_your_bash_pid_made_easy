@@ -7,8 +7,8 @@ for pid_dir in /proc/*/; do
     if [[ -e "/proc/$pid/cmdline" ]]; then
         process_name=$(cat "/proc/$pid/cmdline" | tr -d '\0')
 
-           if [[ "$process_name" == *"bash"* ]]; then
-            echo "$pid $process_name"
+        if [[ "$process_name" == *"bash"* ]]; then
+            echo "$pid bash"
         fi
     fi
 done
