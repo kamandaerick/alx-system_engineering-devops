@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#This script terminates a process using kill
+
+process_name="4-to_infinity_and_beyond"
+pid=$(pgrep -f "$process_name")
+
+if [ -n "$pid" ]; then
+    # Terminate the process using SIGTERM
+    kill "$pid"
+    echo "Terminated."
+fi
