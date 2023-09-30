@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#This script displays lines containing the bash word
+current_pid=$$
+
+ps aux | grep -E "[b]ash" | grep -v "grep" | grep -v "$current_pid"
