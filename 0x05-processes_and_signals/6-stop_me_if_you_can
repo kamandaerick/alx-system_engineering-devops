@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#This script stops a process
+process_name="4-to_infinity_and_beyond"
+pid=$(pgrep -f "$process_name")
+
+if [ -n "$pid" ]; then
+    echo "Stopping process $process_name (PID: $pid)..."
+    kill -s SIGSTOP "$pid"
+    echo "Process $process_name stopped."
+fi
