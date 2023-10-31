@@ -1,0 +1,45 @@
+Task 0: Simple Web Stack
+
+What is a server?
+
+A server refers to a computer hardware and software (system) that provides resources such as services, data, or programs to other computers (known as clients) over a network. Servers therefore store and process data. Examples of servers are web servers, proxy servers, application servers, file transfer protocol servers, file servers, mail servers, DNS servers, database servers and print servers. 
+
+Role of the domain name
+
+The primary role of the domain name is to identify internet resources such as computers, networks, and services with text-based labels (names) that are easier for human beings to memorize instead of numerical IP addresses. They therefore act as user-friendly alternatives to the numeric IP addresses which the computers use to identify resources on the internet. 
+
+What type of DNS record www is in www.foobar.com
+
+The www in www.foobar.com is a subdomain of the domain foobar.com. It is therefore associated with the CNAME (Canonical Name) DNS record. A CNAME is a DNS record that points a domain name (an alias) to another domain. The name that an alias points to is called a canonical name (CNAME). In this case, www.foobar.com points to foobar.com which points to the actual IP address using A record. 
+
+Role of a web server
+
+A web server is a computer system that is capable of accepting requests from clients, processing the requests, and responding to them by sending web content over the internet via a web browser. Web servers perform this function using the Hypertext Transfer Protocol (HTTP). In summary, the primary role of a web server is to store, process, and deliver web pages to its users. Examples of web servers are Nginx, Apache HTTP server, and Microsoft Internet Information Services (IIS). Web servers deliver static content as it it in the host. 
+
+Role of the application server
+
+While web servers deliver static content such as a webpage’s HTML, CSS, Images, Videos, and files, application servers deliver the same plus an additional dynamic content such as real-time updates, or personalized information to users. Application servers consist of applications which carry out specific operations (data processing) before sending the result to the client. Examples of activities carried out by application servers are user authentication, and processing and serving HTML and CSS files (done by web servers). 
+
+These servers execute application-specific logic and generate dynamic content which is then displayed to the user. They achieve this function by running the server side (backend) code such as Python, PHP, and Ruby. 
+
+Role of a database
+
+A database refers to a collection of logically related information that is organized so that it can be easily accessible, managed, and updated through database management systems (DBMS). In summary, databases are used for storage, retrieval, updation, and analysis of data. 
+
+What is the server using to communicate with the computer of the user requesting a website?
+
+Servers communicate with the computers of users using specific protocols. These protocols are rules that govern the establishment, sustenance, and termination of that communication. Examples of these protocols are Hypertext Transfer Protocol (HTTP), HTTPs, Transmission Control Protocol/Internet Protocol (PCP/IP), Domain Name System (DNS) and Secure Shell (SSH) among others. The type of protocol used depends on a specific purpose of the communication. 
+
+For instance, for a user requesting a website, the protocol used for communication between the server and the user is HTTP(s). This communication is facilitated by TCP/IP which ensures reliable transmission of data by breaking it into packets, sending the packets, and reassembling them at the user’s end. DNS is also used to resolve the text the user types on the browser into an IP address. 
+
+Possible Issues
+
+Single Point of Failure (SPOF) - A single point of failure is part of a web infrastructure system that if it fails will cause the entire system to fail. This problem is solved through redundancy. 
+
+Downtime during maintenance - A single server web infrastructure such as this will be down during maintenance. This is because there is only one server and one database. This problem too can be solved through redundancy. 
+
+Cannot scale if too much traffic is coming - This single server infrastructure cannot scale if too much traffic is coming because there is no other server in the system to help in balancing the load. 
+
+
+Link
+https://live.staticflickr.com/65535/53301434140_6a26a09ca3_m.jpg

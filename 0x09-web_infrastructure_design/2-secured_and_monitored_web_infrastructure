@@ -1,0 +1,12 @@
+
+Task 2: Secured and Monitored web infrastructure
+
+The secured and monitored web infrastructure has additional features that ensures that the communication between the clients and servers are secured and monitored. 3 Firewalls are included between the servers and the web resources. The purpose of these firewalls is to secure the network from cyber attacks. It prevents malicious and unwanted content from entering the environment. It also prevents unauthorized access by people such as hackers and insiders. The traffic is now served over HTTPS instead of HTTP because HTTPS requests are protected by Secure Socket Layer (SSL).
+Monitoring clients, also known as data collectors or agents are software components that collect, process, and transmit data from various sources to a monitoring or log management services such as sumo logic. They help in analyzing log data of a system, its performance and other metrics. If I want to monitor my web server’s Query Per Second (QPS), I will analyze the data collected by my monitoring clients to establish how many requests the system receives per second. 
+
+Terminating SSL at the load-balancer level poses various issues such as security in case the load balancer is compromised, performance degradation especially if the load balancer is less powerful to handle incoming traffic, and complexity of the infrastructure. 
+Having only one MySQL server capable of accepting write is an issue because if write fails, all write requests will fail. It is also a hindrance to scalability. It can also slow down the system in case it receives a huge traffic. 
+Having servers with all the same components such as mine is a problem because a fail in one of them will shut down the entire system. 
+
+Link
+https://live.staticflickr.com/65535/53301199393_9155856ac9_m.jpg
