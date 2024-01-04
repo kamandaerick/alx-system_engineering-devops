@@ -1,29 +1,13 @@
 #!/usr/bin/env bash
 # Script installs Nginx on a server
 
-# Check for existence of sudo
-if ! command -v sudo &> /dev/null; then
-    echo "sudo command not found. Please install sudo or run the script as root."
-    exit 1
-fi
-
-# Exit on any command failure
-set -e
-
 sudo apt-get update
 sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
 
-# Setting permissions for web root directory
-sudo chown -R www-data:www-data /var/www/html
-sudo chmod -R 755 /var/www/html
-
-# Create a basic HTML file with the required content
 echo "Hello World!" | sudo tee /var/www/html/index.html
 
-# Testing Nginx configuration
+# testing nginx config
 sudo nginx -t
 
-# Restart Nginx
 sudo service nginx restart
-
