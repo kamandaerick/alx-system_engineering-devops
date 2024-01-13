@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#Configuring and adding subdomains to my domain
+
+function add_subdomains {
+	local domain="$1"
+	local subdomain="$2"
+	
+	if [ -z "$subdomain" ];
+	then
+		subdomain_list=("www" "lb-01" "web-01" "web-02")
+	else
+		subdomain_list=($subdomain)
+	fi
+
+	for item in "${subdomain_list[@]}"; do
+		record_type=$(dig "$item.$domain" | awk '/ANSWER SECTION/ {getline; print $4}')
+		ip_address=$(dig "$item.$domain" | awk '/ANSWER SECTION/ {getline; print $5}')
+		echo "The subdomain $item is a $record_type record and points to $ip_address"
+	done
+}
+add_subdomains "$1" "$2"
