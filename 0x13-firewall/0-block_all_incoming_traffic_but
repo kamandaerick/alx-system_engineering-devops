@@ -1,4 +1,4 @@
-sudo apt-get install ufw
+sudo apt-get install -y ufw
 
 sudo ufw default deny incoming
 sudo ufw default deny outgoing
