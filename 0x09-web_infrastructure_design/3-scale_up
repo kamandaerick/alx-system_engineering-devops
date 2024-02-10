@@ -1,4 +1,0 @@
-Task 3: Scale up
-
-This task includes an additional load balancer and creates duplicates of the web, application, and database servers.
-The additional features makes the architecture more reliable and secure. 
