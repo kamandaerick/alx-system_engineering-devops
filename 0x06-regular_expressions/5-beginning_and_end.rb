@@ -1,3 +1,3 @@
 #!/usr/bin/env ruby
-#
-puts ARGV[0].scan(/^h[0-9a-zA-Z]+n$/).join
+# Regex to match any word starting with h and ending with h
+puts ARGV[0].scan(/^h.n$/).join
