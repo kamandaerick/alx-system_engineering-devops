@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 #Listen to port 98
-
-netstat -tulpn | grep ':98'
+nc -l -p 98 -k -v
