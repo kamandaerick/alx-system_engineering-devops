@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 #Listen to port 98
-lsof -i:98
+
+netstat -tulpn | grep ':98'
