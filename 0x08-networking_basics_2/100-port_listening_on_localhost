@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Listen to port 98
+
+sudo lsof -i:98
