@@ -1,10 +1,8 @@
-Image URL
-
-https://imgur.com/a/7aTP4CS
+IMAGE URL: https://imgur.com/a/7aTP4CS
 
 
-# Project Details
 Task 0: Simple Web Stack
+
 In this simple web stack, if the user wants to access the website www.foobar.com, they will type the domain name on their browser and hit ENTER. The browser through the internet sends the request to the DNS resolver (If the address’ info is not cached in the browser or in the OS) which returns the IP address of the website 8.8.8.8. 
 
 This address is an identity of a server (a computer system) that contains the information about www.foobar.com. The domain name www.foobar.com is a human readable address that we can use to access 8.8.8.8. The www.foobar.com is a CNAME record pointing to the root domain which is `foobar.com`. This root domain is the one that point to 8.8.8.8. (A record). 
@@ -16,4 +14,12 @@ The role of the application server is to perform business logic, interact with t
 The role of the database is to store and manage the data that is required by the application to perform business logic and generate dynamic content. The application server therefore interacts with the database to retrieve, update, and manage data. 
 
 The response from the web server is channeled to the user’s browser, which renders it and display the output on the user’s device screen. 
+
+Issues with this infrastructure
+
+1.	Single Point of Failure: Since we only have one  server, if it goes down, the entire website will become unavailable
+
+2.	Downtime during maintenance: Performing maintenance or deploying a new code may require restarting the web server. This will cause downtime and make the website temporarily unavailable.
+
+3.	Scalability: This simple infrastructure cannot handle large amount of incoming traffic. If traffic increases, the server will become overloaded. This may lead to slow response times or eventual crash.
 
