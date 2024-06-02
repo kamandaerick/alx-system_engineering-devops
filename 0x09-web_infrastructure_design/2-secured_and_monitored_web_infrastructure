@@ -1,0 +1,19 @@
+IMAGE URL: https://imgur.com/a/kit1yla
+
+
+Task 2: Secured and Monitored
+
+In this design, firewalls, SSL, and monitoring clients were introduced to the system. The role of the firewalls is to enhance security by controlling and monitoring incoming and outgoing network traffic based on predefined security rules. One firewall was added before the load balancer and the other two between the load balancer and the two web servers. 
+
+The SSL Termination was introduced in the load balancer to server traffic over the secure HTTPS by ensuring that the communication between the user and the servers are encrypted. In this case, all web servers are active (active-active) and are receiving traffic simultaneously. 
+
+Monitoring clients were introduced in the load balancer and the two web servers to monitor the health and performance of the infrastructure. This would ensure timely detection and resolution of any performance or health issues in the system. The monitoring clients collects data such as request rates, performance, error rates and resource usage among other metrics. After collecting the data, they send it to a central monitoring service such as Sumologic which sends notifications/alerts when something abnormal is detected. 
+
+Issues with this infrastructure
+
+1.	SSL termination at load balancer:  Terminating SSL at the load balancer means that traffic between the load balancer and web servers is unencrypted. This can be a security risk if this internal traffic is intercepted.
+
+2.	Single Write-Capable Database: Having only one MySQL server capable of accepting writes creates a single point of failure for write operations. If the primary server fails, no writes can be performed until it is restored or another server is promoted to primary.
+
+
+3.	All components are on the same physical server: Running the database, web server, and application server on the same physical server can lead to resource contention, where different services compete for CPU, memory, and I/O resources. This can degrade performance and reliability.
