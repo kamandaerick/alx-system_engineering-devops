@@ -1,0 +1,19 @@
+Image URL
+
+https://imgur.com/a/7aTP4CS
+
+
+# Project Details
+Task 0: Simple Web Stack
+In this simple web stack, if the user wants to access the website www.foobar.com, they will type the domain name on their browser and hit ENTER. The browser through the internet sends the request to the DNS resolver (If the address’ info is not cached in the browser or in the OS) which returns the IP address of the website 8.8.8.8. 
+
+This address is an identity of a server (a computer system) that contains the information about www.foobar.com. The domain name www.foobar.com is a human readable address that we can use to access 8.8.8.8. The www.foobar.com is a CNAME record pointing to the root domain which is `foobar.com`. This root domain is the one that point to 8.8.8.8. (A record). 
+
+The role of the web server in the system is to receive HTTP requests from the browser and respond with static files such as HTML, CSS, JavaScript and Images. The web server can also forward the request to the application server for dynamic content.
+
+The role of the application server is to perform business logic, interact with the database, and generate dynamic content, which is sent to the web server to be returned/served to the client. The application server therefore, hosts application files. 
+
+The role of the database is to store and manage the data that is required by the application to perform business logic and generate dynamic content. The application server therefore interacts with the database to retrieve, update, and manage data. 
+
+The response from the web server is channeled to the user’s browser, which renders it and display the output on the user’s device screen. 
+
