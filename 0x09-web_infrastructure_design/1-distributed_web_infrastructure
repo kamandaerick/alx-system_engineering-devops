@@ -1,0 +1,21 @@
+IMAGE URL: https://imgur.com/a/uVuYLiA
+
+
+Task 1: Distributed web infrastructure
+
+This infrastructure introduced a load balancer (HAProxy) and an additional server. The role of the load balancer is to distribute incoming traffic between the two web servers, enhancing reliability and scalability. The basic distribution algorithm is the round robin, which will distribute the incoming traffic evenly across the two servers. 
+
+
+The two servers can be configured to be active always and handle traffic simultaneously (active-active) or one server can be handling the traffic and the other one remains idle/standby and only become active when the primary one fails (active-passive). The addition of a web server in this infrastructure provides redundancy and load distribution. 
+
+The primary/master database (Master node) handles all write operations and can server the read operations. The Secondary/replica database receives data replication from the primary node and its main role is to serve read operations. This reduces the load on the primary node. 
+
+Issues with this infrastructure
+
+1.	Single Points of Failure (SPOF): If the load balancer fails, the whole system will go down. In addition, if the primary database fails, the write operations will be affected even if the read operations can continue from the replica. 
+
+2.	Security Issues: Lack of firewall and HTTPS makes the infrastructure vulnerable to unauthorized access and attacks. Since the data is not encrypted, it can easily be exposed to malicious interceptors. 
+
+
+3.	Lack of monitoring: Lack of monitoring of the system makes it hard to detect and respond to potential issues such as server failures, security breaches and performance bottlenecks in a timely manner. 
+
