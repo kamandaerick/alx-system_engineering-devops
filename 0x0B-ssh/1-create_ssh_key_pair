@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Create an SSH key school 4096 bits long
+
+ssh-keygen -b 4096 -f school -N betty
