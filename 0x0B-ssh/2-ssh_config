@@ -1,0 +1,5 @@
+Host kamanda-01
+        HostName 3.94.213.52
+        User ubuntu
+        IdentityFile ~/.ssh/school
+        PasswordAuthentication no
