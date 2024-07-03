@@ -10,4 +10,4 @@ echo "Ceci n'est pas une page" >> /var/www/html/error_404.html
 sudo sed -i '25i\	error_page 404 /error_404.html;' /etc/nginx/sites-available/default
 
 # Restarting nginx
-sudo service nginx restart
+sudo service nginx reload
