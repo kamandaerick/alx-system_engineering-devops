@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 #Permanent redirection
 
+#Install nginx
+sudo apt-get update
+sudo apt-get install -y nginx
 #Start nginx
-service nginx start
+#service nginx start
 
 #Edit the configuration file
 
