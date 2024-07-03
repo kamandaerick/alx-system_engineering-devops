@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Install nginx
+# Install nginx
 
 apt-get update -y
 apt-get upgrade -y
@@ -12,10 +12,16 @@ service nginx start
 
 sudo sed -i '24i\       rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 
-# code to create error page and add a redirect for error 404
+# Code to create error page and add a redirect for error 404
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
-string_for_replacement="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
-sudo sed -i "s/listen 80 default_server;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
-# restart the server
-sudo service nginx reload
+# Ensure the string_for_replacement syntax is correct
+string_for_replacement="listen 80 default_server;\n\tserver_name _;\n\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}"
+
+sudo sed -i "s|listen 80 default_server;|$string_for_replacement|" /etc/nginx/sites-available/default
+
+# Test the Nginx configuration
+nginx -t
+
+# Restart the server to apply changes
+sudo service nginx restart
