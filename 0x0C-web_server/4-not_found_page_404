@@ -1,20 +1,17 @@
 #!/usr/bin/env bash
+# Configures a new ubuntu machine by installing
+sudo apt-get update -y
+sudo apt-get install nginx -y
 
-# Install nginx
-apt-get update -y
-apt-get upgrade -y
-apt-get install -y nginx
+# starting nginx service
+sudo service nginx start
 
-# Create the custom 404 page
-echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+# Setting up /redirect_me to a youtube video
+sudo sed -i '24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 
-# Start Nginx service
-service nginx start
+# Set up a 404 page
+echo "Ceci n'est pas une page" >> /var/www/html/error_404.html
+sudo sed -i '25i\	error_page 404 /error_404.html;' /etc/nginx/sites-available/default
 
-# Update Nginx configuration to use the custom 404 page
-sudo sed -i '24i\        error_page 404 /custom_404.html;' /etc/nginx/sites-available/default
-sudo sed -i '25i\        location = /custom_404.html {\n            internal;\n        }' /etc/nginx/sites-available/default
-
-# Reload Nginx service to apply changes
-service nginx reload
-
+# Restarting nginx
+sudo service nginx restart
