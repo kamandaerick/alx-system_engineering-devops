@@ -1,14 +1,24 @@
 #!/usr/bin/env bash
-# Script that configures a new Ubuntu machine to respect above requirements
 
+# Update package lists and install Nginx
 sudo apt-get update
 sudo apt-get install -y nginx
 
+# Create an index.html file with "Hello World!" content
 echo "Hello World!" | sudo tee /var/www/html/index.html
 
-REDIRECT_BLOCK="location /redirect_me {
+# Define the redirection block
+REDIRECT_BLOCK='
+location /redirect_me {
     return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-}
-sudo sed -i "s/server_name _;/$REDIRECT_BLOCK/" /etc/nginx/sites-available/default
+}'
 
+# Insert the redirection block into the default site configuration
+sudo sed -i "/server_name _;/a $REDIRECT_BLOCK" /etc/nginx/sites-available/default
+
+# Test the Nginx configuration for syntax errors
+sudo nginx -t
+
+# Restart Nginx to apply the changes
 sudo service nginx restart
+
