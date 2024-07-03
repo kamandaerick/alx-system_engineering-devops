@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
-# Configures a new ubuntu machine by installing
-sudo apt-get update -y
-sudo apt-get install nginx -y
+#Install nginx
 
-# starting nginx service
-sudo service nginx start
+apt-get update -y
+apt-get upgrade -y
 
-# Setting up /redirect_me to a youtube video
-sudo sed -i '24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+apt-get install -y nginx
 
-# Set up a 404 page
-echo "Ceci n'est pas une page" >> /var/www/html/error_404.html
-sudo sed -i '25i\	error_page 404 /error_404.html;' /etc/nginx/sites-available/default
+echo "Hello World!" > /var/www/html/index.html
 
-# Restarting nginx
-sudo service nginx restart
+service nginx start
+
+sudo sed -i '24i\       rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+
+# code to create error page and add a redirect for error 404
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+string_for_replacement="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+sudo sed -i "s/listen 80 default_server;/$string_for_replacement/" /etc/nginx/sites-enabled/default
+
+# restart the server
+sudo service nginx reload
