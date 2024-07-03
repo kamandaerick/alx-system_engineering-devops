@@ -1,23 +1,14 @@
 #!/usr/bin/env bash
-#Permanent redirection
+# Script that configures a new Ubuntu machine to respect above requirements
 
-#Install nginx
 sudo apt-get update
 sudo apt-get install -y nginx
-#Start nginx
-#service nginx start
 
-#Edit the configuration file
+echo "Hello World!" | sudo tee /var/www/html/index.html
 
 REDIRECT_BLOCK="location /redirect_me {
     return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-}"
+}
+sudo sed -i "s/server_name _;/$REDIRECT_BLOCK/" /etc/nginx/sites-available/default
 
-#Use sed to replace or add the redirection lock
-sed -i '/location \/redirect_me {/,/}/c\\'"$REDIRECT_BLOCK" /etc/nginx/sites-available/default
-
-#Test the configuration
-nginx _t
-
-#Reload nginx
-service nginx reload
+sudo service nginx restart
