@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#Permanent redirection
+
+#Start nginx
+service nginx start
+
+#Edit the configuration file
+
+REDIRECT_BLOCK="location /redirect_me {
+    return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+}"
+
+#Use sed to replace or add the redirection lock
+sed -i '/location \/redirect_me {/,/}/c\\'"$REDIRECT_BLOCK" /etc/nginx/sites-available/default
+
+#Test the configuration
+nginx _t
+
+#Reload nginx
+service nginx reload
