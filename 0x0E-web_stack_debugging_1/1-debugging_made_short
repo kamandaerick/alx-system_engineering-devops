@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Configures nginx to port 80 for only ipv4 addresses
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+start-stop-daemon --start --background --exec /usr/sbin/nginx -- -c /etc/nginx/nginx.conf
