@@ -1,24 +1,24 @@
 #!/usr/bin/python3
-"""Accessing a REST API for todo lists of employees"""
-
+""" Export api to csv"""
+import csv
 import requests
 import sys
 
-
 if __name__ == '__main__':
-    employeeId = sys.argv[1]
-    baseUrl = "https://jsonplaceholder.typicode.com/users"
-    url = baseUrl + "/" + employeeId
+    user = sys.argv[1]
+    url_user = 'https://jsonplaceholder.typicode.com/users/' + user
+    res = requests.get(url_user)
+    """ANYTHING"""
+    user_name = res.json().get('username')
+    task = url_user + '/todos'
+    res = requests.get(task)
+    tasks = res.json()
 
-    response = requests.get(url)
-    username = response.json().get('username')
-
-    todoUrl = url + "/todos"
-    response = requests.get(todoUrl)
-    tasks = response.json()
-
-    with open('{}.csv'.format(employeeId), 'w') as file:
+    with open('{}.csv'.format(user), 'w') as csvfile:
         for task in tasks:
-            file.write('"{}","{}","{}","{}"\n'
-                       .format(employeeId, username, task.get('completed'),
-                               task.get('title')))
+            completed = task.get('completed')
+            """Complete"""
+            title_task = task.get('title')
+            """Done"""
+            csvfile.write('"{}","{}","{}","{}"\n'.format(
+                user, user_name, completed, title_task))
